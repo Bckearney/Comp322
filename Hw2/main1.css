@@ -1,0 +1,18 @@
+.underline{
+    text-decoration: underline black;
+
+}
+
+.redtext{
+    color:red;
+    font-weight: bold;
+}
+
+.orangehighlight{
+    background-color: orange;
+}
+
+#widthstyle{
+    width:350px;
+}
+
