@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <title>Calculator</title>
+        <link href="design.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <script>
+        let yesorno = true; 
+         let table = "<table border = '1'>";
+            table = table + "<tr>";
+                table = table + "<th bgcolor = 'orange' >X</th>";
+                table = table + "<th bgcolor = 'orange' >OP</th>";
+                table = table + "<th bgcolor = 'orange' >Y</th>";
+                table = table + "<th bgcolor = 'orange' >Result</th>";
+            table = table + "</tr>";
+            let totalcnt = 0;
+            let maxresult = 0; 
+            let minresult =0;
+            let cnt = 0;
+            let minarr =[]; 
+
+        while(yesorno == true ){
+            let wronginputflag = 0; 
+            table = table + "<tr> ";
+            let x= prompt("Value of x");
+            cnt++;
+            table = table + "<td>" + x + "</td>";
+            let op= prompt("Value of op");
+            table = table + "<td>" + op + "</td>";
+            let y= prompt("Value of y");
+            table = table + "<td>" + y + "</td>";
+            if (isNaN(parseInt(x)) || isNaN(parseInt(y))){
+                wronginputflag = 1; 
+            }
+            let result = 0; 
+            if( wronginputflag== 1 ){
+                result = "Wrong Input Number"; 
+            } else if(op=="*"){
+                result = parseInt(x) * parseInt(y);
+                totalcnt += parseInt(result) ; 
+                if(parseInt(maxresult) < parseInt(result)){
+                    maxresult = result;
+                }
+                minarr.push(parseInt(result)); 
+                
+            }else if(op=="%"){
+                result = parseInt(x) % parseInt(y);
+                totalcnt += parseInt(result) ; 
+                if(parseInt(maxresult) < parseInt(result)){
+                    maxresult = result;
+                }
+
+                minarr.push(parseInt(result)); 
+
+            }else if(op=="+"){
+                result = parseInt(x) + parseInt(y);      
+                totalcnt += parseInt(result) ; 
+                if(parseInt(maxresult) < parseInt(result)){
+                    maxresult = result;
+                }       
+                minarr.push(parseInt(result));    
+            }else if(op=="/"){
+                result = parseInt(x) / parseInt(y);
+                totalcnt += parseInt(result) ; 
+                if(parseInt(maxresult) < parseInt(result)){
+                    maxresult = result;
+                }
+                minarr.push(parseInt(result)); 
+            } else  {
+                result = "Operation Computation Error";
+                //dont add to total for max avg sum calc
+            }
+            table = table + "<td>" + result + "</td>";
+            table = table + "</tr> ";
+            yesorno = confirm("Continue");
+        }
+        table = table + "</table>" ; 
+        document.write(table); 
+        let avg = totalcnt / cnt;
+        const minvalued = Math.min(...minarr); 
+        let table2 = "<table border = '1'>";
+            table2 = table2 + "<tr>";
+                table2 = table2 + "<th bgcolor = 'orange'>Min</th>";
+                table2 = table2 + "<th bgcolor = 'orange'>Max</th>";
+                table2 = table2 + "<th bgcolor = 'orange'>Average</th>";
+                table2 = table2 + "<th bgcolor = 'orange'>Total</th>";
+            table2 = table2 + "</tr>";
+            table2 = table2 + "<tr> ";
+            table2 = table2 + "<td>" + minvalued + "</td>";
+            table2 = table2 + "<td>" + maxresult + "</td>";
+            table2 = table2 + "<td>" + avg + "</td>";
+            table2 = table2 + "<td>" + totalcnt + "</td>";
+            table2 = table2 + "<tr> ";
+            table2 = table2 + "</table> ";
+            document.write(table2);
+        </script>
+        <div>
+            <h2><a href="../index.html" target="_blank"> Index </a> </h4>
+        </div>
+    </body>
+</html>
